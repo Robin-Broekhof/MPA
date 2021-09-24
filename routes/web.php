@@ -20,7 +20,7 @@ Route::get('/', [PagesController::class, 'index']);
 Route::get('/genres', [GenresController::class, 'index']);
 
 
-Route::get('/genres/{{$genre}}', [GenresController::class, 'index']);
+Route::get('/genres=klassiek', [GenresController::class, 'index']);
 
 
 
