@@ -22,5 +22,14 @@ Route::get('/genres', [GenresController::class, 'index']);
 
 Route::get('/genres=klassiek', [GenresController::class, 'index']);
 
+Route::get('/login', [PagesController::class, 'login']);
+Route::get('/register', [PagesController::class, 'register']);
 
 
+
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

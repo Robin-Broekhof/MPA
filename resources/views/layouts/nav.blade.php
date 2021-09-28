@@ -7,16 +7,16 @@
             >Home page</a></li>
         <li><a 
             href="/genres/"
-            class="{{ request()->is('genres') ? 'active' : ''}}">
-            Genres page</a></li>
+            class="{{ request()->is('genres') ? 'active' : ''}}"
+            >Genres page</a></li>
         <li><a 
-            href="#"
-            class=""
-            >item3</a></li>
+            href="/login/"
+            class="{{ request()->is('login') ? 'active' : ''}}"
+            >login</a></li>
         <li><a 
-            href="#"
-            class=""
-            >item4</a></li>
+            href="/register/"
+            class="{{ request()->is('register') ? 'active' : ''}}"
+            >register</a></li>
         <li><a 
             href="#"
             class=""
