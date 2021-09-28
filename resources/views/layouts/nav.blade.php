@@ -1,25 +1,26 @@
 
 <body>
-    <ul>
-        <li><a 
-            href="/"
-            class="{{ request()->is('/') ? 'active' : ''}}"
-            >Home page</a></li>
-        <li><a 
-            href="/genres/"
-            class="{{ request()->is('genres') ? 'active' : ''}}"
-            >Genres page</a></li>
-        <li><a 
-            href="/login/"
-            class="{{ request()->is('login') ? 'active' : ''}}"
-            >login</a></li>
-        <li><a 
-            href="/register/"
-            class="{{ request()->is('register') ? 'active' : ''}}"
-            >register</a></li>
-        <li><a 
-            href="#"
-            class=""
-            >item5</a></li>
-    </ul>
 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <div class="navbar-nav">
+
+              <a class="nav-link {{ request()->is('/') ? 'active' : ''}}" 
+              href="/">
+              Home page</a>
+
+              <a class="nav-link {{ request()->is('genres') ? 'active' : ''}}" 
+              href="/genres/">
+              Genres page</a>
+
+              <a class="nav-link float-end{{ request()->is('login') ? 'active' : ''}}" 
+              href="/login/">
+              login</a>
+
+              <a class="nav-link float-right{{ request()->is('register') ? 'active' : ''}}" 
+              href="/register/">
+              register</a>
+
+            </div>
+        </div>
+      </nav>
