@@ -13,13 +13,17 @@
               href="/genres/">
               Genres page</a>
 
-              <a class="nav-link float-end{{ request()->is('login') ? 'active' : ''}}" 
-              href="/login/">
-              login</a>
+              <a class="nav-link {{ request()->is('playlists') ? 'active' : ''}}" 
+              href="/playlists/">
+              Playlists</a>
 
-              <a class="nav-link float-right{{ request()->is('register') ? 'active' : ''}}" 
+              <a class="nav-link {{ request()->is('login') ? 'active' : ''}}" 
+              href="/login/">
+              Login</a>
+
+              <a class="nav-link me-2 {{ request()->is('register') ? 'active' : ''}}" 
               href="/register/">
-              register</a>
+              Register</a>
 
             </div>
         </div>

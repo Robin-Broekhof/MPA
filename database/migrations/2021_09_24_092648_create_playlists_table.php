@@ -14,8 +14,9 @@ class CreatePlaylistsTable extends Migration
     public function up()
     {
         Schema::create('playlists', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->increments('playlist_id');
+            $table->string('name');
+            $table->mediumText('description');
         });
     }
 
