@@ -1,30 +1,39 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <div class="navbar-nav">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
 
-              <a class="nav-link {{ request()->is('/') ? 'active' : ''}}" 
-              href="/">
-              Home page</a>
+      <ul class="navbar-nav">
 
-              <a class="nav-link {{ request()->is('genres') ? 'active' : ''}}" 
-              href="/genres/">
-              Genres page</a>
+        <a class="nav-link {{ request()->is('/') ? 'active' : ''}}" 
+          href="/">
+          Home</a>
+          <a class="nav-link {{ request()->is('genres') ? 'active' : ''}}" 
+          href="/genres">
+          Genres</a>
+          <a class="nav-link {{ request()->is('songs') ? 'active' : ''}}" 
+          href="/songs">
+          Songs</a>
+          <a class="nav-link {{ request()->is('playlists') ? 'active' : ''}}" 
+          href="/playlists">
+          Playlists</a>
+        
+      </ul>
 
-              <a class="nav-link {{ request()->is('playlists') ? 'active' : ''}}" 
-              href="/playlists/">
-              Playlists</a>
+    
 
-              <a class="nav-link {{ request()->is('login') ? 'active' : ''}}" 
-              href="/login/">
-              Login</a>
+    <div class="d-flex align-items-center">
+      <ul class="navbar-nav">
+        <a class="nav-link {{ request()->is('login') ? 'active' : ''}}" 
+          href="/login/">
+          Login</a>
+        <a class="nav-link {{ request()->is('register') ? 'active' : ''}}" 
+          href="/register/">
+          Register</a>
+      </ul>
+    </div>
 
-              <a class="nav-link me-2 {{ request()->is('register') ? 'active' : ''}}" 
-              href="/register/">
-              Register</a>
 
-            </div>
-        </div>
-      </nav>
+  </div>
+</nav>

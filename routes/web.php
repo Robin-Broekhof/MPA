@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\GenresController;
+use App\Http\Controllers\SongsController;
+use App\Http\Controllers\PlaylistsController;
+
+Auth::routes();
 
 /*
 |--------------------------------------------------------------------------
@@ -15,25 +19,36 @@ use App\Http\Controllers\GenresController;
 |
 */
 
+
+
+//main page 
 Route::get('/', [PagesController::class, 'index']);
 
+//genres page
 Route::get('/genres', [GenresController::class, 'index']);
 
+//songs page
+Route::get('/songs', [SongsController::class, 'index']);
 
-Route::get('/genres=klassiek', [GenresController::class, 'index']);
+//playlists page
+Route::get('/playlists', [PlaylistsController::class, 'index']);
 
+
+
+
+
+
+
+
+
+
+
+//login page
 Route::get('/login', [PagesController::class, 'login']);
+
+//resister page
 Route::get('/register', [PagesController::class, 'register']);
 
+//when already loggin in go to the home page
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
-
-
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
