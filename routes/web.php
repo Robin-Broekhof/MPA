@@ -6,7 +6,6 @@ use App\Http\Controllers\GenresController;
 use App\Http\Controllers\SongsController;
 use App\Http\Controllers\PlaylistsController;
 
-Auth::routes();
 
 /*
 |--------------------------------------------------------------------------
@@ -26,12 +25,15 @@ Route::get('/', [PagesController::class, 'index']);
 
 //genres page
 Route::get('/genres', [GenresController::class, 'index']);
+Route::get('/genres/details?id=', [GenresController::class, 'index']);
 
 //songs page
 Route::get('/songs', [SongsController::class, 'index']);
+Route::get('/songs/details?id={$id}', [SongsController::class, 'details']);
 
 //playlists page
 Route::get('/playlists', [PlaylistsController::class, 'index']);
+Route::get('/playlists/details?id={$id}', [PlaylistsController::class, 'details']);
 
 
 
@@ -44,11 +46,13 @@ Route::get('/playlists', [PlaylistsController::class, 'index']);
 
 
 //login page
-Route::get('/login', [PagesController::class, 'login']);
+Auth::routes();
+Route::get('/login', [PagesController::class, 'login'])->name('login');
 
 //resister page
-Route::get('/register', [PagesController::class, 'register']);
+Auth::routes();
+Route::get('/register', [PagesController::class, 'register'])->name('register');
 
 //when already loggin in go to the home page
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

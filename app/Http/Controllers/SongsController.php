@@ -12,4 +12,9 @@ class SongsController extends Controller
         $songs = Song::all();
         return view('songs.index', compact('songs'));
     }
+    public function details() 
+    {
+        $songs = Song::all();
+        return view('songs.details', compact('songs'));
+    }
 }
