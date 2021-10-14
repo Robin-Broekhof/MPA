@@ -25,15 +25,16 @@ Route::get('/', [PagesController::class, 'index']);
 
 //genres page
 Route::get('/genres', [GenresController::class, 'index']);
-Route::get('/genres/details?id=', [GenresController::class, 'index']);
+Route::get('/genres/details/', [GenresController::class, 'index']);
 
 //songs page
 Route::get('/songs', [SongsController::class, 'index']);
-Route::get('/songs/details?id={$id}', [SongsController::class, 'details']);
+Route::get('/songs/details/{$id}', [SongsController::class, 'details']);
+
 
 //playlists page
 Route::get('/playlists', [PlaylistsController::class, 'index']);
-Route::get('/playlists/details?id={$id}', [PlaylistsController::class, 'details']);
+Route::get('/playlists/details/{$id}', [PlaylistsController::class, 'details']);
 
 
 
