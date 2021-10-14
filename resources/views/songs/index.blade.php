@@ -4,7 +4,7 @@
 
 
     <h1 class="large-title">All Songs</h1>
-    <a class="btn btn-dark d-block">ADD SONG</a>
+    <a href="{{ url('songs/create')}} " class="btn btn-dark d-block">ADD SONG</a>
     @foreach ($songs as $song)
         <div class="card song-card">
             <div class="card-body">
@@ -12,7 +12,7 @@
                 <a class="card-text"> {{ $song->creator}} </a>
                 <a class="card-text"> {{ $song->length}} </a>
                 <p class="card-text"> {{ $song->genre_id }} </p>
-                <a href="songs/details/{{ $song->song_id }}" class="btn btn-outline-dark btn-block">DETAILS</a>
+                <a href="" class="btn btn-outline-dark btn-block">DETAILS</a>
             </div>
         </div>
     @endforeach

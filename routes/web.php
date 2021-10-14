@@ -5,6 +5,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\GenresController;
 use App\Http\Controllers\SongsController;
 use App\Http\Controllers\PlaylistsController;
+use App\Http\Controllers\UsersController;
 
 
 /*
@@ -25,28 +26,18 @@ Route::get('/', [PagesController::class, 'index']);
 
 //genres page
 Route::get('/genres', [GenresController::class, 'index']);
-<<<<<<< HEAD
 Route::get('/genres/details/', [GenresController::class, 'index']);
 
 //songs page
 Route::get('/songs', [SongsController::class, 'index']);
+Route::get('/songs/create', [SongsController::class, 'create']);
+
 Route::get('/songs/details/{$id}', [SongsController::class, 'details']);
 
 
 //playlists page
 Route::get('/playlists', [PlaylistsController::class, 'index']);
 Route::get('/playlists/details/{$id}', [PlaylistsController::class, 'details']);
-=======
-Route::get('/genres/details?id=', [GenresController::class, 'index']);
-
-//songs page
-Route::get('/songs', [SongsController::class, 'index']);
-Route::get('/songs/details?id={$id}', [SongsController::class, 'details']);
-
-//playlists page
-Route::get('/playlists', [PlaylistsController::class, 'index']);
-Route::get('/playlists/details?id={$id}', [PlaylistsController::class, 'details']);
->>>>>>> 5e1cbce51baf9a5d3cfad6d1b04c98aa3190ae0d
 
 
 
@@ -69,3 +60,9 @@ Route::get('/register', [PagesController::class, 'register'])->name('register');
 //when already loggin in go to the home page
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+//logout function
+ 
+ Route::get('/logout', [UsersController::class, 'logout'])->name('logout');
+
+ Route::get('/test', [UsersController::class, 'usertest']);
