@@ -28,8 +28,16 @@ class SongsController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function addToDB(Request $request)
     {
-        dd($request);
+        $request->validate([
+            'name' => 'required',
+            'creator' => 'required',
+            // 'genre' => 'required',
+            'length' => 'required'
+        ]);
+
+        dd($request->name);
+        //https://www.youtube.com/watch?v=HKJDLXsTr8A
     }
 }
