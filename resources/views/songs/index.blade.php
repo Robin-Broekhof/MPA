@@ -2,6 +2,13 @@
 @section('content')
 
 
+@if (session()->has('message'))
+    <div>
+        <p>
+            {{ session()->get('message') }}
+        </p>
+    </div>
+@endif
 
     <h1 class="large-title">All Songs</h1>
     <a href="{{ url('songs/create')}} " class="btn btn-dark d-block">ADD SONG</a>

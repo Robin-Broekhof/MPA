@@ -45,8 +45,11 @@
                             </div>
                         </div>
 
-                        {{-- <div class="form-group row">
+                         <div class="form-group row">
                             <label for="genre" class="col-md-4 col-form-label text-md-right">Song genre</label>
+
+                            <input id="genre_id" name="genre_id" type="text" class="form-control" autofocus>
+                            <!--
                             <div class="col-md-6"> 
                                 <select class="form-select" name="genre" id="validationDefault04" required>
                                     <option selected disabled value="">Choose...</option>
@@ -55,7 +58,9 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div> --}}
+
+                            -->
+                        </div> 
 
                         <div class="form-group row">
                             <label for="length" class="col-md-4 col-form-label text-md-right">Song duration</label>

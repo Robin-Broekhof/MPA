@@ -33,11 +33,26 @@ class SongsController extends Controller
         $request->validate([
             'name' => 'required',
             'creator' => 'required',
-            // 'genre' => 'required',
+            'genre_id' => 'required',
             'length' => 'required'
         ]);
 
-        dd($request->name);
+        
+        Song::create([
+            'name' => $request->input('name'),
+            'creator' => $request->input('creator'),
+            'genre_id' => $request->input('genre_id'),
+            'length' => $request->input('length'),
+            //'user_id' => auth()->user()->id
+        ]);
+
+        return redirect('/songs')->with('message', 'song added');
+        
+
+
+
+
+        
         //https://www.youtube.com/watch?v=HKJDLXsTr8A
     }
 }
