@@ -42,7 +42,7 @@ class SongsController extends Controller
             'name' => $request->input('name'),
             'creator' => $request->input('creator'),
             'genre_id' => $request->input('genre_id'),
-            'length' => $request->input('length'),
+            'length' => $request->input('length')
             //'user_id' => auth()->user()->id
         ]);
 

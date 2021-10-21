@@ -33,12 +33,14 @@ Route::get('/songs', [SongsController::class, 'index']);
 Route::get('/songs/create', [SongsController::class, 'create']);
 Route::post('/songs/addToDB', [SongsController::class, 'addToDB']);
 
-
-Route::get('/songs/details/{$id}', [SongsController::class, 'details']);
+        Route::get('/songs/details/{$id}', [SongsController::class, 'details']);
 
 
 //playlists page
 Route::get('/playlists', [PlaylistsController::class, 'index']);
+Route::get('/playlists/create', [PlaylistsController::class, 'create']);
+Route::post('/playlists/addToDB', [PlaylistsController::class, 'addToDB']);
+
 Route::get('/playlists/details/{$id}', [PlaylistsController::class, 'details']);
 
 

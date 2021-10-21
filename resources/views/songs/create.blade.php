@@ -6,27 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Create a song</div>
-
-
-
-
-
-
-                @if ($errors->any())
-                    <div>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{$error}}</li>
-                            @endforeach
-                        
-                        </ul>    
-                    </div>                    
-                @endif
-
-
-
-
+                <h2 class="card-header">Create a song</h2>
                 <div class="card-body">
                     <form method="POST" action="{{ url('songs/addToDB')}} ">
                         @csrf
@@ -49,6 +29,11 @@
                             <label for="genre" class="col-md-4 col-form-label text-md-right">Song genre</label>
 
                             <input id="genre_id" name="genre_id" type="text" class="form-control" autofocus>
+                            
+                            <!-- 
+                                !!**werkend maken met options
+                            -->
+                
                             <!--
                             <div class="col-md-6"> 
                                 <select class="form-select" name="genre" id="validationDefault04" required>
