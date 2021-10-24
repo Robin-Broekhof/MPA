@@ -13,20 +13,31 @@ class SongsController extends Controller
         $songs = Song::all();
         return view('songs.index', compact('songs'));
     }
-    public function details($song_id) 
+    public function details($song_id)    // !!** naar compact veranderen
+    {
+        return view('songs.details')
+            ->with('song', Song::where('song_id', $song_id)->first());
+    }
+    
+    public function details2($song_id) 
     {
         $songs = Song::all();
         return view('songs.details', compact('songs'));
     }
     
+
+
+
+
+
+
+
     public function create() 
     {
         $songs = Song::all();
         $genres = Genre::all();
         return view('songs.create', compact('songs', 'genres'));
     }
-
-
     public function addToDB(Request $request)
     {
         $request->validate([

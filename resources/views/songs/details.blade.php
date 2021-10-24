@@ -2,7 +2,33 @@
 @section('content')
 
 
-<h1>song details</h1>
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <h2 class="card-header">Song Details</h2>
+                <a href="/songs" class="btn btn-dark">Return To The Song Page</a>
+                <div class="card-body text-center ">
+                    <h3> Song Name:      <span class="font-weight-bold">{{ $song->name }}    </span> </h3>
+                    <h3> Song Creator:   <span class="font-weight-bold">{{ $song->creator }} </span> </h3>
+                    <h3> Song Genre:   <span class="font-weight-bold">{{ $song->genre_id }} </span> </h3>
+                    <h3> Song Duration:  <span class="font-weight-bold">{{ $song->length }}  </span> </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+
+
+
+
+
+
+
 
 
 

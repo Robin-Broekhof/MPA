@@ -13,7 +13,11 @@ class GenresController extends Controller
         $genres = Genre::all();
         return view('genres.index', compact('genres'));
     }
-    
+    public function showbygenre($genre_id)    // !!** naar compact veranderen
+    {
+        return view('genres.showbygenre')
+            ->with('genre', Genre::where('genre_id', $genre_id)->first());
+    }
     
 
 }

@@ -16,7 +16,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $playlist->name}}</h5>
                 <p class="card-text"> {{ $playlist->description}} </p>
-                <a href="playlists/details?id={{$playlist->playlist_id}}" class="btn btn-outline-dark btn-block">MORE</a>
+                <a href="/playlists/details/{{ $playlist->playlist_id}}" class="btn btn-outline-dark btn-block">DETAILS</a>
                 <a href="#" class="btn btn-outline-danger">DELETE</a>
                 <a href="#" class="btn btn-outline-warning">UPDATE</a>
                 <a> {{ $playlist->user_id }} </a>

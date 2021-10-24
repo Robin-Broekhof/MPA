@@ -26,21 +26,20 @@ Route::get('/', [PagesController::class, 'index']);
 
 //genres page
 Route::get('/genres', [GenresController::class, 'index']);
-Route::get('/genres/details/', [GenresController::class, 'index']);
+Route::get('/genres/showbygenre/{genre_id}', [GenresController::class, 'showbygenre']);
 
 //songs page
 Route::get('/songs', [SongsController::class, 'index']);
 Route::get('/songs/create', [SongsController::class, 'create']);
 Route::post('/songs/addToDB', [SongsController::class, 'addToDB']);
-Route::get('/songs/details/{song_id}', [SongsController::class, 'details']);
+Route::get('/songs/details/{song_id}', [SongsController::class, 'details']); 
 
 
 //playlists page
 Route::get('/playlists', [PlaylistsController::class, 'index']);
 Route::get('/playlists/create', [PlaylistsController::class, 'create']);
 Route::post('/playlists/addToDB', [PlaylistsController::class, 'addToDB']);
-
-Route::get('/playlists/details/{$id}', [PlaylistsController::class, 'details']);
+Route::get('/playlists/details/{playlist_id}', [PlaylistsController::class, 'details']);
 
 
 

@@ -12,18 +12,38 @@ class PlaylistsController extends Controller
         $playlists = Playlist::all();
         return view('playlists.index', compact('playlists'));
     }
-    public function details() 
+    public function details($playlist_id)    // !!** naar compact veranderen
+    {
+        return view('playlists.details')
+            ->with('playlist', Playlist::where('playlist_id', $playlist_id)->first());
+    }
+
+    public function details2() 
     {
         $playlists = Playlist::all();
         return view('playlists.details', compact('playlists'));
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function create() 
     {
         $playlists = Playlist::all();
         return view('playlists.create', compact('playlists'));
     }
-
     public function addToDB(Request $request)
     {
         $request->validate([

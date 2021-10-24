@@ -11,7 +11,7 @@
         <a class="nav-link {{ request()->is('genres') ? 'active' : ''}}" 
           href="/genres">
           Genres</a>
-        <a class="nav-link {{ request()->is('songs') ? 'active' : ''}}" 
+        <a class="nav-link {{ request()->is('songs', 'songs/create', 'songs/details') ? 'active' : ''}}" 
           href="/songs">
           Songs</a>
         <a class="nav-link {{ request()->is('playlists') ? 'active' : ''}}" 
