@@ -17,6 +17,11 @@
         <a class="nav-link {{ request()->is('playlists') ? 'active' : ''}}" 
           href="/playlists">
           Playlists</a>
+        @if (auth::check())
+        <a class="nav-link {{ request()->is('myuploads') ? 'active' : ''}}" 
+          href="/myuploads">
+          Myuploads</a>
+        @endif
       </ul>
 
 

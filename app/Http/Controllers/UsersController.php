@@ -13,7 +13,6 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Routing\Redirector
      */
-    
     public function logout()
     {
         Session::flush();
@@ -22,8 +21,16 @@ class UsersController extends Controller
         
     }
 
-    public function usertest(){
-        return view('auth/register');
-    }
+
+
+
+
+
+
+
+
+
+
+    
 }
 

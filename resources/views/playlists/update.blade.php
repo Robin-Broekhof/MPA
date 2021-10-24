@@ -22,7 +22,7 @@
                         <div class="form-group row">
                             <label for="creator" class="col-md-4 col-form-label text-md-right">Playlist description</label>
                             <div class="col-md-6">
-                                <input id="description" name="description" type="text" class="form-control" autofocus value="{{ $playlist->description }}">
+                                <textarea name="description" id="description" cols="30" rows="10" class="form-control" autofocus>{{ $playlist->description }}</textarea>
                             </div>
                         </div>
 

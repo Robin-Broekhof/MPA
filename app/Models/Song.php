@@ -9,11 +9,21 @@ use Illuminate\Database\Eloquent\Model;
 class Song extends Model
 {
 
-    protected $fillable = ['name', 'creator', 'genre_id', 'length'];
+    protected $fillable = ['name', 'creator', 'genre_id', 'user_id', 'length'];
 
 
 
     protected $table = 'songs';
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function genre()
+    {
+        return $this->belongsTo(Genre::class);
+    }
 
 
 }
