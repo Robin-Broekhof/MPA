@@ -32,8 +32,7 @@ Route::get('/genres/details/', [GenresController::class, 'index']);
 Route::get('/songs', [SongsController::class, 'index']);
 Route::get('/songs/create', [SongsController::class, 'create']);
 Route::post('/songs/addToDB', [SongsController::class, 'addToDB']);
-
-        Route::get('/songs/details/{$id}', [SongsController::class, 'details']);
+Route::get('/songs/details/{song_id}', [SongsController::class, 'details']);
 
 
 //playlists page

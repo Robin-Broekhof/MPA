@@ -13,13 +13,12 @@ class SongsController extends Controller
         $songs = Song::all();
         return view('songs.index', compact('songs'));
     }
-    public function details() 
+    public function details($song_id) 
     {
         $songs = Song::all();
         return view('songs.details', compact('songs'));
     }
-
-
+    
     public function create() 
     {
         $songs = Song::all();
@@ -53,6 +52,5 @@ class SongsController extends Controller
 
 
         
-        //https://www.youtube.com/watch?v=HKJDLXsTr8A
     }
 }
