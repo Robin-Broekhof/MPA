@@ -2,16 +2,18 @@
 @section('content')
 
 
-@if (session()->has('message'))
-    <div>
-        <p>
-            {{ session()->get('message') }}
-        </p>
-    </div>
-@endif
 
     <h1 class="large-title">All Songs</h1>
     <a href="{{ url('songs/create')}} " class="btn btn-dark d-block">ADD SONG</a>
+
+    @if (session()->has('message'))
+        <div>
+            <h2 class="bg-success">
+                {{ session()->get('message') }}
+            </h2>
+        </div>
+    @endif
+    
     @foreach ($songs as $song)
         <div class="card song-card">
             <div class="card-body">

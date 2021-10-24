@@ -8,6 +8,16 @@ use App\Models\Song;
 
 class SongsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => [
+            'index',
+            'details'
+            ]]);
+    }
+
+
     public function index() 
     {
         $songs = Song::all();

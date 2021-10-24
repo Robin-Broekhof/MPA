@@ -3,13 +3,20 @@
 
 
 
-@if (auth::check())
 
 
-
-<h1> {{ auth()->user()->id }} </h1>
 <h1>ALl playlists</h1>
 <a href="{{ url('playlists/create')}} " class="btn btn-dark d-block">CREATE PLAYLIST</a>
+
+
+@if (session()->has('message'))
+    <div>
+        <h2 class="bg-success">
+            {{ session()->get('message') }}
+        </h2>
+    </div>
+@endif
+
 @foreach ($playlists as $playlist)
     @if (auth()->user()->id == $playlist->user_id)
         <div class="card song-card">
@@ -17,8 +24,8 @@
                 <h5 class="card-title">{{ $playlist->name}}</h5>
                 <p class="card-text"> {{ $playlist->description}} </p>
                 <a href="/playlists/details/{{ $playlist->playlist_id}}" class="btn btn-outline-dark btn-block">DETAILS</a>
-                <a href="#" class="btn btn-outline-danger">DELETE</a>
-                <a href="#" class="btn btn-outline-warning">UPDATE</a>
+                <a href="/playlists/delete/{{ $playlist->playlist_id }}" class="btn btn-outline-danger">DELETE</a>
+                <a href="/playlists/update/{{ $playlist->playlist_id }}" class="btn btn-outline-warning">UPDATE</a>
                 <a> {{ $playlist->user_id }} </a>
             </div>
         </div>
@@ -29,16 +36,6 @@
 
 
 
-@else
-<div>
-    <h1 class="text-center mt-4 bg-light text-dark ">
-        Log in to access playlists
-    </h1>
-</div>
-
-
-
-@endif
 
 
     

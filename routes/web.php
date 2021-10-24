@@ -37,9 +37,17 @@ Route::get('/songs/details/{song_id}', [SongsController::class, 'details']);
 
 //playlists page
 Route::get('/playlists', [PlaylistsController::class, 'index']);
+Route::get('/playlists/details/{playlist_id}', [PlaylistsController::class, 'details']);
+
 Route::get('/playlists/create', [PlaylistsController::class, 'create']);
 Route::post('/playlists/addToDB', [PlaylistsController::class, 'addToDB']);
-Route::get('/playlists/details/{playlist_id}', [PlaylistsController::class, 'details']);
+
+Route::get('/playlists/update/{playlist_id}', [PlaylistsController::class, 'update']);
+Route::put('/playlists/updateIntoDB/{playlist_id}', [PlaylistsController::class, 'updateIntoDB']);
+
+
+Route::get('/playlists/delete/{playlist_id}', [PlaylistsController::class, 'delete']);
+
 
 
 
