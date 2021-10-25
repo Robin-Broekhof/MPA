@@ -26,7 +26,6 @@
                
                 
                 <a href="/songs/details/{{ $song->id}}" class="btn btn-dark text-white">DETAILS</a>
-                
                 <a href="/songs/addtoplaylist/{{ $song->id }}" class="btn btn-info">Add to playlist</a>
             </div>
         </div>

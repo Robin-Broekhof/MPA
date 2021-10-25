@@ -17,6 +17,7 @@
                 <a class="card-text"> {{ $song->length}} </a><br>
                 <a class="card-text">genre: {{ $song->genre->name }} </a>
                 <a href="/songs/details/{{ $song->id}}" class="btn btn-outline-dark btn-block">DETAILS</a>
+                <a href="/songs/addtoplaylist/{{ $song->id }}" class="btn btn-info">Add to playlist</a>
             </div>
         </div>
 
