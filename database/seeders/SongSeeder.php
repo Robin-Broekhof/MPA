@@ -17,7 +17,7 @@ class SongSeeder extends Seeder
     {
         DB::table('songs')->insert(
             [
-                'song_id' => 0,
+                'id' => 0,
                 'genre_id' => 1,
                 'user_id' => 2,
                 'creator' => 'Ed Sheeran',
@@ -26,7 +26,7 @@ class SongSeeder extends Seeder
             ]);
         DB::table('songs')->insert(
             [
-                'song_id' => 0,
+                'id' => 0,
                 'genre_id' => 1,
                 'user_id' => 2,
                 'creator' => 'Ed Sheeran',
@@ -39,7 +39,7 @@ class SongSeeder extends Seeder
                 
             DB::table('songs')->insert(
                 [
-                    'song_id' => 0,
+                    'id' => 0,
                     'genre_id' => 2,
                     'user_id' => 1,
                     'creator' => 'Miles Davis',
@@ -48,7 +48,7 @@ class SongSeeder extends Seeder
                 ]);
             DB::table('songs')->insert(
                 [
-                    'song_id' => 0,
+                    'id' => 0,
                     'genre_id' => 2,
                     'user_id' => 1,
                     'creator' => 'Dizzy Gillespie',
@@ -61,7 +61,7 @@ class SongSeeder extends Seeder
 
             DB::table('songs')->insert(
                 [
-                    'song_id' => 0,
+                    'id' => 0,
                     'genre_id' => 3,
                     'user_id' => 2,
                     'creator' => 'Deep Puriple',
@@ -70,7 +70,7 @@ class SongSeeder extends Seeder
                 ]);
             DB::table('songs')->insert(
                 [
-                    'song_id' => 0,
+                    'id' => 0,
                     'genre_id' => 3,
                     'user_id' => 2,
                     'creator' => 'AC/DC',
@@ -84,7 +84,7 @@ class SongSeeder extends Seeder
 
             DB::table('songs')->insert(
                 [
-                    'song_id' => 0,
+                    'id' => 0,
                     'genre_id' => 4,
                     'user_id' => 1,
                     'creator' => 'Bach',
@@ -93,7 +93,7 @@ class SongSeeder extends Seeder
                 ]);
             DB::table('songs')->insert(
                 [
-                    'song_id' => 0,
+                    'id' => 0,
                     'genre_id' => 4,
                     'user_id' => 1,
                     'creator' => 'Bach',
@@ -108,7 +108,7 @@ class SongSeeder extends Seeder
 
             DB::table('songs')->insert(
                 [
-                    'song_id' => 0,
+                    'id' => 0,
                     'genre_id' => 5,
                     'user_id' => 2,
                     'creator' => 'Rihanna',
@@ -117,7 +117,7 @@ class SongSeeder extends Seeder
                 ]);
             DB::table('songs')->insert(
                 [
-                    'song_id' => 0,
+                    'id' => 0,
                     'genre_id' => 5,
                     'user_id' => 2,
                     'creator' => 'Spice girls',

@@ -17,14 +17,14 @@ class PlaylistSeeder extends Seeder
     {
         DB::table('playlists')->insert(
             [
-                'playlist_id' => 1,
+                'id' => 1,
                 'user_id' => 1,
                 'name' => 'dance nummers',
                 'description' => 'lijst met populaire dance nummers'
             ]);
         DB::table('playlists')->insert(
             [
-                'playlist_id' => 2,
+                'id' => 2,
                 'user_id' => 2,
                 'name' => 'favorieten nummers',
                 'description' => 'lijst met favorieten nummers'

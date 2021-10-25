@@ -23,10 +23,9 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $playlist->name}}</h5>
                 <p class="card-text"> {{ $playlist->description}} </p>
-                <a href="/playlists/details/{{ $playlist->playlist_id}}" class="btn btn-outline-dark btn-block">DETAILS</a>
-                <a href="/playlists/delete/{{ $playlist->playlist_id }}" class="btn btn-outline-danger">DELETE</a>
-                <a href="/playlists/update/{{ $playlist->playlist_id }}" class="btn btn-outline-warning">UPDATE</a>
-                <a> {{ $playlist->user_id }} </a>
+                <a href="/playlists/details/{{ $playlist->id}}" class="btn btn-outline-dark btn-block">DETAILS</a>
+                <a href="/playlists/delete/{{ $playlist->id }}" class="btn btn-outline-danger">DELETE</a>
+                <a href="/playlists/update/{{ $playlist->id }}" class="btn btn-outline-warning">UPDATE</a>
             </div>
         </div>
     

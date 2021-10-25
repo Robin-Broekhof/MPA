@@ -14,18 +14,25 @@
         <a class="nav-link {{ request()->is('songs', 'songs/create', 'songs/details') ? 'active' : ''}}" 
           href="/songs">
           Songs</a>
+        @if (auth::check())
+        <a class="nav-link {{ request()->is('myuploads') ? 'active' : ''}}" 
+          href="/songs/myuploads">
+          Myuploads</a>
         <a class="nav-link {{ request()->is('playlists') ? 'active' : ''}}" 
           href="/playlists">
           Playlists</a>
-        @if (auth::check())
-        <a class="nav-link {{ request()->is('myuploads') ? 'active' : ''}}" 
-          href="/myuploads">
-          Myuploads</a>
         @endif
+
+
+
+
+
+
       </ul>
 
 
       
+
         <div class="d-flex align-items-center">
           <ul class="navbar-nav">
             @if (!Auth::check())
@@ -36,6 +43,7 @@
                 href="/register/">
                 Register</a>
             @else
+              <a class="nav-link">welcome:{{ Auth::user()->name }}</a>
               <a class="nav-link {{ request()->is('playlists') ? 'active' : ''}}" 
                 href="/logout/">
                 Logout</a> 

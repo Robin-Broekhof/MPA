@@ -19,31 +19,31 @@ class GenreSeeder extends Seeder
     {
         DB::table('genres')->insert(
             [
-                'genre_id' => 1,
+                'id' => 1,
                 'name' => 'pop',
                 'description' => 'pop muziek'
             ]);
         DB::table('genres')->insert(
             [
-                'genre_id' => 2,
+                'id' => 2,
                 'name' => 'jazz',
                 'description' => 'jazz muziek'
             ]);
         DB::table('genres')->insert(
             [
-                'genre_id' => 3,
+                'id' => 3,
                 'name' => 'rock',
                 'description' => 'rock muziek'
             ]);
         DB::table('genres')->insert(
             [
-                'genre_id' => 4,
+                'id' => 4,
                 'name' => 'klassiek',
                 'description' => 'klassieke muziek'
             ]);
         DB::table('genres')->insert(
             [
-                'genre_id' => 5,
+                'id' => 5,
                 'name' => 'dance',
                 'description' => 'dance muziek'
             ]);

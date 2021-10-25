@@ -8,7 +8,7 @@
             <div class="card">
                 <h2 class="card-header">Update a song</h2>
                 <div class="card-body">
-                    <form method="POST" action="{{ url('songs/updateIntoDB',$song->song_id)}} ">
+                    <form method="POST" action="{{ url('songs/updateIntoDB',$song->id)}} ">
                         @csrf
                         @method('PUT')
 
@@ -35,7 +35,7 @@
 
                                     @foreach ($genres as $genre)
 
-                                        <option name="genre_id" class="form-control" value="{{ $genre->genre_id}} " autofocus>{{ $genre->name}}</option>
+                                        <option name="genre_id" class="form-control" value="{{ $genre->id}} " autofocus>{{ $genre->name}}</option>
                                     
                                     @endforeach
 

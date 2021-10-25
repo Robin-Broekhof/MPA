@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Genre;
 use App\Models\Song;
+use App\Models\Playlist;
+use App\Models\Playlist_song;
 
 class SongsController extends Controller
 {
@@ -37,15 +39,60 @@ class SongsController extends Controller
         $genres = Genre::all();
         return view('songs.myuploads', compact('songs', 'genres'));
     }
+     /**
+     * shows the myuploads page
+     */
+    public function addToPlaylist($id) 
+    {
+        $playlists = Playlist::all();
+        return view('songs.addtoplaylist', compact('playlists'))
+            ->with('song', Song::where('id', $id)->first());
+    }
+    public function addSongIntoPlaylist(Request $request)
+    {
+        $request->validate([
+            'song_id' => 'required',
+            'playlist_id' => 'required'
+        ]);
+
+        playlist_song::create([
+            'song_id' => $request->input('song_id'),
+            'playlist_id' => $request->input('playlist_id')
+        ]);
+        return redirect('/songs')->with('message', 'song added to playlist');
+
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * shows detail page of a single playlist
      *
      * @param [int] $playlist_id
      */
-    public function details($song_id)    // !!** naar compact veranderen
+    public function details($id)    // !!** naar compact veranderen
     {
         return view('songs.details')
-            ->with('song', Song::where('song_id', $song_id)->first());
+            ->with('song', Song::where('id', $id)->first());
     }
     
 
@@ -92,11 +139,11 @@ class SongsController extends Controller
      *
      * @param [int] $song_id
      */
-    public function update($song_id)
+    public function update($id)
     {
         $genres = Genre::all();
         return view('songs.update', compact('genres'))
-            ->with('song', Song::where('song_id', $song_id)->first());
+            ->with('song', Song::where('id', $id)->first());
     }
 
     /**
@@ -105,7 +152,7 @@ class SongsController extends Controller
      * @param Request $request
      * @param [int] $playlist_id
      */
-    public function updateIntoDB(Request $request, $song_id)
+    public function updateIntoDB(Request $request, $id)
     {
         $request->validate([
             'name' => 'required',
@@ -114,7 +161,7 @@ class SongsController extends Controller
             'length' => 'required'
         ]);
 
-        Song::where('song_id', $song_id)
+        Song::where('id', $id)
             ->update([
                 'name' => $request->input('name'),
                 'creator' => $request->input('creator'),
@@ -122,7 +169,7 @@ class SongsController extends Controller
                 'length' => $request->input('length')
                 //'user_id' => auth()->user()->id
             ]);
-            return redirect('/songs')->with('message', 'song successfully updated');
+            return redirect('/myuploads')->with('message', 'song successfully updated');
     }
 
 
@@ -131,11 +178,11 @@ class SongsController extends Controller
      *
      * @param [int] $playlist_id
      */
-    public function delete($song_id)
+    public function delete($id)
     {
-        $song = Song::where('song_id', $song_id);
+        $song = Song::where('id', $id);
         $song->delete();
-        return redirect('/songs')->with('message', 'playlist successfully deleted');
+        return redirect('/myuploads')->with('message', 'playlist successfully deleted');
     }
 
 

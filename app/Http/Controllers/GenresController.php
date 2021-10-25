@@ -22,11 +22,11 @@ class GenresController extends Controller
      *
      * @param [int] $genre_id
      */
-    public function showbygenre($genre_id)    // !!** naar compact veranderen
+    public function showbygenre($id)    // !!** naar compact veranderen
     {
         $songs = Song::all();
         return view('genres.showbygenre', compact('songs'))
-            ->with('genre', Genre::where('genre_id', $genre_id)->first());
+            ->with('genre', Genre::where('id', $id)->first());
     }
     
 

@@ -30,24 +30,26 @@ Route::get('/genres/showbygenre/{genre_id}', [GenresController::class, 'showbyge
 
 //songs page
 Route::get('/songs', [SongsController::class, 'index']);
-Route::get('/myuploads', [SongsController::class, 'myuploads']);
-Route::get('/songs/details/{song_id}', [SongsController::class, 'details']); 
+Route::get('/songs/myuploads', [SongsController::class, 'myuploads']);
+Route::get('/songs/addtoplaylist/{id}', [SongsController::class, 'addToPlaylist']);
+Route::post('/songs/addSongIntoPlaylist/{id}', [SongsController::class, 'addSongIntoPlaylist']);
+Route::get('/songs/details/{id}', [SongsController::class, 'details']); 
 Route::get('/songs/create', [SongsController::class, 'create']);
 Route::post('/songs/addToDB', [SongsController::class, 'addToDB']);
-Route::get('/songs/update/{song_id}', [SongsController::class, 'update']);
-Route::put('/songs/updateIntoDB/{song_id}', [SongsController::class, 'updateIntoDB']);
-Route::get('/songs/delete/{song_id}', [SongsController::class, 'delete']);
+Route::get('/songs/update/{id}', [SongsController::class, 'update']);
+Route::put('/songs/updateIntoDB/{id}', [SongsController::class, 'updateIntoDB']);
+Route::get('/songs/delete/{id}', [SongsController::class, 'delete']);
 
 
 
 //playlists page
 Route::get('/playlists', [PlaylistsController::class, 'index']);
-Route::get('/playlists/details/{playlist_id}', [PlaylistsController::class, 'details']);
+Route::get('/playlists/details/{id}', [PlaylistsController::class, 'details']);
 Route::get('/playlists/create', [PlaylistsController::class, 'create']);
 Route::post('/playlists/addToDB', [PlaylistsController::class, 'addToDB']);
-Route::get('/playlists/update/{playlist_id}', [PlaylistsController::class, 'update']);
-Route::put('/playlists/updateIntoDB/{playlist_id}', [PlaylistsController::class, 'updateIntoDB']);
-Route::get('/playlists/delete/{playlist_id}', [PlaylistsController::class, 'delete']);
+Route::get('/playlists/update/{id}', [PlaylistsController::class, 'update']);
+Route::put('/playlists/updateIntoDB/{id}', [PlaylistsController::class, 'updateIntoDB']);
+Route::get('/playlists/delete/{id}', [PlaylistsController::class, 'delete']);
 
 
 

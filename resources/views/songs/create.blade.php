@@ -46,7 +46,7 @@
                                 <select name='genre_id' class="form-select form-select-lg" required>
                                     <option selected disabled value="">Select a genre...</option>
                                     @foreach ($genres as $genre)
-                                        <option name="genre_id" class="form-control" value="{{ $genre->genre_id}} " autofocus>{{ $genre->name}}</option>
+                                        <option name="genre_id" class="form-control" value="{{ $genre->id}} " autofocus>{{ $genre->name}}</option>
                                     @endforeach
                                 </select>
                             </div>

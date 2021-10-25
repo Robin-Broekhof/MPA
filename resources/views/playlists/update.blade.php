@@ -2,14 +2,13 @@
 @section('content')
 
 
-@if (auth::check())
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <h2 class="card-header">Update playlist</h2>
                 <div class="card-body">
-                    <form method="POST" action="{{ url('playlists/updateIntoDB',$playlist->playlist_id)}} ">
+                    <form method="POST" action="{{ url('playlists/updateIntoDB',$playlist->id)}} ">
                         @csrf
                         @method('PUT')
                         <div class="form-group row">
@@ -39,11 +38,5 @@
     </div>
 </div>
     
-@else
-
-LOG IN
-    
-@endif
-
 
 @endsection

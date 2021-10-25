@@ -18,19 +18,16 @@
                 <br>
                 <a class="card-text">genre: {{ $song->genre->name }} </a>
                 <br>
-                <a class="card-text">uploaded by: {{ 
-
-
-                $song->user->name
-                
-                
-                }} </a>
+                <a class="card-text">uploaded by: {{ $song->user->name }} </a>
+                <br>
 
 
 
                
                 
-                <a href="/songs/details/{{ $song->song_id}}" class="btn btn-outline-dark btn-block">DETAILS</a>
+                <a href="/songs/details/{{ $song->id}}" class="btn btn-dark text-white">DETAILS</a>
+                
+                <a href="/songs/addtoplaylist/{{ $song->id }}" class="btn btn-info">Add to playlist</a>
             </div>
         </div>
     @endforeach

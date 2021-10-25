@@ -37,10 +37,10 @@ class PlaylistsController extends Controller
      *
      * @param [int] $playlist_id
      */
-    public function details($playlist_id)    // !!** naar compact veranderen
+    public function details($id)    // !!** naar compact veranderen
     {
         return view('playlists.details')
-            ->with('playlist', Playlist::where('playlist_id', $playlist_id)->first());
+            ->with('playlist', Playlist::where('id', $id)->first());
     }
 
 
@@ -87,27 +87,27 @@ class PlaylistsController extends Controller
     /**
      * shows the form page of the update functionality
      *
-     * @param [int] $playlist_id
+     * @param [int] $id
      */
-    public function update($playlist_id)
+    public function update($id)
     {
         return view('playlists.update')
-            ->with('playlist', Playlist::where('playlist_id', $playlist_id)->first());
+            ->with('playlist', Playlist::where('id', $id)->first());
     }
     /**
      * get the data from the update form request and updates the database
      *
      * @param Request $request
-     * @param [int] $playlist_id
+     * @param [int] $id
      */
-    public function updateIntoDB(Request $request, $playlist_id)
+    public function updateIntoDB(Request $request, $id)
     {
         $request->validate([
             'name' => 'required',
             'description' => 'required'
         ]);
 
-        Playlist::where('playlist_id', $playlist_id)
+        Playlist::where('id', $id)
             ->update([
                 'name' => $request->input('name'),
                 'description' => $request->input('description')
@@ -122,11 +122,11 @@ class PlaylistsController extends Controller
     /**
      * deletes playlist entry
      *
-     * @param [int] $playlist_id
+     * @param [int] $id
      */
-    public function delete($playlist_id)
+    public function delete($id)
     {
-        $playlist = Playlist::where('playlist_id', $playlist_id);
+        $playlist = Playlist::where('id', $id);
         $playlist->delete();
         return redirect('/playlists')->with('message', 'playlist successfully deleted');
     }
