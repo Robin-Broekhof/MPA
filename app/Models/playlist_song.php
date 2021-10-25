@@ -10,6 +10,6 @@ class playlist_song extends Model
     use HasFactory;
 
     protected $fillable = ['song_id', 'playlist_id'];
-    protected $table = 'playlists_songs';
+    protected $table = 'playlist_song';
 
 }

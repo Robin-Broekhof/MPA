@@ -14,7 +14,7 @@
                         @csrf
                         
 
-                                <input name="song_id" value="{{ $song->id }}" >
+                                <input hidden name="song_id" value="{{ $song->id }}" >
 
                         <div class="form-group row">
                             <label for="playlist_id" class="col-md-4 col-form-label text-md-right">Select a playlist</label>

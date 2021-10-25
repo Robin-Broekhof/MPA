@@ -14,4 +14,11 @@ class Playlist extends Model
 
 
     protected $table = 'playlists';
+
+
+
+    public function songs()
+    {
+        return $this->belongsToMany(Song::class);
+    }
 }

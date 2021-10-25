@@ -131,7 +131,7 @@ class SongsController extends Controller
             'length' => $request->input('length'),
             'user_id' => auth()->user()->id
         ]);
-        return redirect('/myuploads')->with('message', 'song added');
+        return redirect('/songs/myuploads')->with('message', 'song added');
     }
 
     /**
@@ -169,7 +169,7 @@ class SongsController extends Controller
                 'length' => $request->input('length')
                 //'user_id' => auth()->user()->id
             ]);
-            return redirect('/myuploads')->with('message', 'song successfully updated');
+            return redirect('/songs/myuploads')->with('message', 'song successfully updated');
     }
 
 
@@ -182,7 +182,7 @@ class SongsController extends Controller
     {
         $song = Song::where('id', $id);
         $song->delete();
-        return redirect('/myuploads')->with('message', 'playlist successfully deleted');
+        return redirect('/songs/myuploads');
     }
 
 
