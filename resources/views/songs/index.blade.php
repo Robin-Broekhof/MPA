@@ -4,7 +4,6 @@
 
 
     <h1 class="large-title">All Songs</h1>
-
     
     @foreach ($songs as $song)
         <div class="card song-card">

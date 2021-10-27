@@ -5,7 +5,7 @@
 
 
 
-<h1>ALl playlists</h1>
+<h1>All playlists</h1>
 <a href="{{ url('playlists/create')}} " class="btn btn-dark d-block">CREATE PLAYLIST</a>
 
 
@@ -16,6 +16,21 @@
         </h2>
     </div>
 @endif
+
+@if (Session::has('name') && Session::get('user_id') == Auth()->id() );
+    <div class="card song-card">
+        <div class="card-body">
+            <h5 class="card-title">{{ Session::get('name') }} {{ Session::get('user_id') }} </h5>
+            <p class="card-text">This is a temporary playlist that will be deleted after 2 hours or logging out on a device </p>
+            <a href="/playlists/details/" class="btn btn-outline-dark btn-block">DETAILS</a>
+            <a href="/playlists/delete/" class="btn btn-outline-danger">DELETE</a>
+            <a href="/playlists/update/" class="btn btn-outline-warning">UPDATE</a>
+        </div>
+    </div>
+@else
+    
+@endif
+
 
 @foreach ($playlists as $playlist)
     @if (auth()->user()->id == $playlist->user_id)

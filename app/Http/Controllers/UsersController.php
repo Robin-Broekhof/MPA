@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 class UsersController extends Controller
 {
+    
     /**
      * Log out account user.
      *

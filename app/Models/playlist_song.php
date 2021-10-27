@@ -12,4 +12,6 @@ class playlist_song extends Model
     protected $fillable = ['song_id', 'playlist_id'];
     protected $table = 'playlist_song';
 
+
+    
 }

@@ -35,7 +35,7 @@
 
                                     @foreach ($genres as $genre)
 
-                                        <option name="genre_id" class="form-control" value="{{ $genre->id}} " autofocus>{{ $genre->name}}</option>
+                                        <option name="genre_id" class="form-control" value="{{ $genre->id}}" {{$genre->id == $song->genre_id  ? 'selected' : ''}} autofocus>{{ $genre->name}}</option>
                                     
                                     @endforeach
 
@@ -46,7 +46,7 @@
                         <div class="form-group row">
                             <label for="length" class="col-md-4 col-form-label text-md-right">Song duration</label>
                             <div class="col-md-6">
-                                <input id="length" name="length" type="text" class="form-control" autofocus value="{{ $song->length }}">
+                                <input value="{{ $song->length }}" name="length" id="length" class="form-cntrol" type="time" step="1" autofocus>
                         
 
                             </div>
@@ -56,7 +56,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">CREATE</button>
+                                <button type="submit" class="btn btn-primary">UPDATE</button>
                             </div>
                         </div>
 

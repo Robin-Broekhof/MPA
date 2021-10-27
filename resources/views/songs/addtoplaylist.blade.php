@@ -26,6 +26,18 @@
                                             <option name="playlist_id" class="form-control" value="{{ $playlist->id}} " autofocus>{{ $playlist->name}}</option>  
                                         @endif
                                     @endforeach
+
+
+                                    @if (Session::has('name'))
+                                        <option name="addToTempQueue" id="addToTempQueue" value="addToTempQueue" class="form control" autofocus>Add to Temporary Queue</option>                                          
+                                    @else 
+                                        <option name="createTempQueue" id="createTempQueue" value="createTempQueue" class="form control" autofocus>Create Temporary queue and add to queue</option>  
+                                    @endif
+
+
+
+
+
                                 </select>
                             </div>
                         </div> 

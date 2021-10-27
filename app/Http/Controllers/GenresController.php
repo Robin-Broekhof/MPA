@@ -8,7 +8,16 @@ use App\Models\Song;
 
 class GenresController extends Controller
 {
-    
+    /**
+     * show which pages are accessible if not logged in
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => [
+            'index',
+            'showbygenre'
+            ]]);
+    }
     /**
      * shows the index page
      */

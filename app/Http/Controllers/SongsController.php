@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Models\Genre;
 use App\Models\Song;
 use App\Models\Playlist;
@@ -26,6 +27,8 @@ class SongsController extends Controller
      */
     public function index() 
     {
+
+
         $songs = Song::all();
         $genres = Genre::all();
         return view('songs.index', compact('songs', 'genres'));
@@ -50,17 +53,33 @@ class SongsController extends Controller
     }
     public function addSongIntoPlaylist(Request $request)
     {
-        $request->validate([
-            'song_id' => 'required',
-            'playlist_id' => 'required'
-        ]);
 
-        playlist_song::create([
-            'song_id' => $request->input('song_id'),
-            'playlist_id' => $request->input('playlist_id')
-        ]);
+        if ($request->input('playlist_id') == 'createTempQueue') {
+
+            Session::put('name', 'Temporary Queue');
+            Session::put('user_id', Auth()->id());
+            Session::put('song_id', [$request->input('song_id')]);
+
+        } 
+        elseif ($request->input('playlist_id') == 'addToTempQueue' ) {
+            
+
+            Session::push('song_id', [$request->input('song_id')]);
+
+        }
+
+            else {
+            $request->validate([
+                'song_id' => 'required',
+                'playlist_id' => 'required'
+            ]);
+
+            playlist_song::create([
+                'song_id' => $request->input('song_id'),
+                'playlist_id' => $request->input('playlist_id')
+            ]);
+        }
         return redirect('/songs')->with('message', 'song added to playlist');
-
         
     }
 

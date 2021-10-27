@@ -19,7 +19,7 @@ class CreateSongsTable extends Migration
             $table->integer('user_id');
             $table->string('creator');
             $table->string('name');
-            $table->string('length');       //!!** verandern naar tijd
+            $table->time('length');       //!!** verandern naar tijd
             $table->timestamps();
         });
     }
