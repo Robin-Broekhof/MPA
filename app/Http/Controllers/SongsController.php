@@ -51,6 +51,10 @@ class SongsController extends Controller
         return view('songs.addtoplaylist', compact('playlists'))
             ->with('song', Song::where('id', $id)->first());
     }
+
+
+
+
     public function addSongIntoPlaylist(Request $request)
     {
 
@@ -64,7 +68,7 @@ class SongsController extends Controller
         elseif ($request->input('playlist_id') == 'addToTempQueue' ) {
             
 
-            Session::push('song_id', [$request->input('song_id')]);
+            Session::push('song_id', $request->input('song_id'));
 
         }
 

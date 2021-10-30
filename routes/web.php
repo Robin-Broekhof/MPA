@@ -52,6 +52,9 @@ Route::put('/playlists/updateIntoDB/{id}', [PlaylistsController::class, 'updateI
 Route::get('/playlists/delete/{id}', [PlaylistsController::class, 'delete']);
 
 
+Route::get('/playlists/removequeue/', [PlaylistsController::class, 'removequeue']);
+
+
 
 
 

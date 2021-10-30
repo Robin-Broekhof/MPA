@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Models\Playlist;
-use App\Models\Songs;
+use App\Models\Song;
+use App\Models\Genre;
 
 class PlaylistsController extends Controller
 {
@@ -40,8 +42,18 @@ class PlaylistsController extends Controller
      */
     public function details($id)    // !!** naar compact veranderen
     {
-        return view('playlists.details')
-            ->with('playlist', Playlist::where('id', $id)->first());
+        if ($id == 0) {
+            
+            $queue = true;
+            $songs = Song::all();
+            return view('playlists.details', compact('songs'))
+                ->with('queue', $queue);
+        }
+        else{
+            $queue = false;
+            return view('playlists.details')
+                ->with('playlist', Playlist::where('id', $id)->first())->with('queue', $queue);
+        }
     }
 
 
@@ -138,7 +150,13 @@ class PlaylistsController extends Controller
 
 
 
-
+    public function removequeue()
+    {
+        Session::forget('name');
+        Session::forget('user_id');
+        Session::forget('song_id');
+        return redirect('/playlists')->with('message', 'queue has been removed');
+    }
 
 
 

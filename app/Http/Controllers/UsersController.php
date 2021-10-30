@@ -16,7 +16,7 @@ class UsersController extends Controller
      */
     public function logout()
     {
-        Session::flush();
+        Session::forget('_token');
         Auth::logout();
         return redirect('/');
         

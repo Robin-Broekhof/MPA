@@ -20,11 +20,13 @@
 @if (Session::has('name') && Session::get('user_id') == Auth()->id() );
     <div class="card song-card">
         <div class="card-body">
-            <h5 class="card-title">{{ Session::get('name') }} {{ Session::get('user_id') }} </h5>
+            <h5 class="card-title">{{ Session::get('name') }} </h5> 
+            
+
             <p class="card-text">This is a temporary playlist that will be deleted after 2 hours or logging out on a device </p>
-            <a href="/playlists/details/" class="btn btn-outline-dark btn-block">DETAILS</a>
-            <a href="/playlists/delete/" class="btn btn-outline-danger">DELETE</a>
-            <a href="/playlists/update/" class="btn btn-outline-warning">UPDATE</a>
+            <a href="/playlists/details/0" class="btn btn-outline-dark btn-block">DETAILS</a>
+            <a href="/playlists/update/" class="btn btn-outline-warning btn-block">MAKE THIS QUEUE INTO PLAYLIST</a>
+            <a href="/playlists/removequeue/" class="btn btn-outline-danger">DELETE</a>
         </div>
     </div>
 @else

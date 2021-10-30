@@ -13,8 +13,9 @@
                 <div class="card-body text-center ">
                     <h3> Song Name:      <span class="font-weight-bold">{{ $song->name }}    </span> </h3>
                     <h3> Song Creator:   <span class="font-weight-bold">{{ $song->creator }} </span> </h3>
-                    <h3> Song Genre:   <span class="font-weight-bold">{{ $song->genre_id }} </span> </h3>
+                    <h3> Song Genre:   <span class="font-weight-bold">{{ $song->genre->name }} </span> </h3>
                     <h3> Song Duration:  <span class="font-weight-bold">{{ $song->length }}  </span> </h3>
+                    <h3> Song Uploader:  <span class="font-weight-bold">{{ $song->user->name }}  </span> </h3>
                 </div>
             </div>
         </div>
