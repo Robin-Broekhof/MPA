@@ -50,10 +50,12 @@ Route::post('/playlists/addToDB', [PlaylistsController::class, 'addToDB']);
 Route::get('/playlists/update/{id}', [PlaylistsController::class, 'update']);
 Route::put('/playlists/updateIntoDB/{id}', [PlaylistsController::class, 'updateIntoDB']);
 Route::get('/playlists/delete/{id}', [PlaylistsController::class, 'delete']);
+Route::get('/playlists/removefromplaylist/{playlist_id}&{song_id}', [PlaylistsController::class, 'removefromplaylist']);
+Route::get('/playlists/convertplaylist', [PlaylistsController::class, 'convertplaylist']);
+Route::post('/playlists/createPlaylistFromQueue', [PlaylistsController::class, 'createPlaylistFromQueue']);
 
-
+Route::get('/playlists/removesongfromqueue', [PlaylistsController::class, 'removeSongFromQueue']);
 Route::get('/playlists/removequeue/', [PlaylistsController::class, 'removequeue']);
-
 
 
 

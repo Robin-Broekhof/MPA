@@ -4,7 +4,13 @@
 
 <a>00:25:22</a>
 
-
+@if (session()->has('message'))
+    <div>
+        <h2 class="bg-success">
+            {{ session()->get('message') }}
+        </h2>
+    </div>
+@endif
 
 <div class="container">
     <div class="row justify-content-center">
@@ -44,7 +50,7 @@
                             <td> {{ $song->creator }} </td>
                             <td> {{ $genre->name }} </td>
                             <td> {{ $song->length }} </td>
-                            <td><a href="removefromplaylist/" class="btn btn-danger">X</a></td>
+                            <td><a href="/playlists/removesongfromqueue" class="btn btn-danger">X</a></td>
                           </tr>
 
 
@@ -75,7 +81,7 @@
                               <td>{{ $song->creator}}</td>
                               <td>{{ $song->genre->name}}</td>
                               <td>{{ $song->length}}</td>
-                              <td><a href="removefromplaylist/{{ $playlist->id, $song->id }}" class="btn btn-danger">X</a></td>
+                              <td><a href="/playlists/removefromplaylist/{{ $playlist->id }}&{{ $song->id }}" class="btn btn-danger">X</a></td>
                             </tr>
                         @empty
 

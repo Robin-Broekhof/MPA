@@ -6,9 +6,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <h2 class="card-header">Create a playlist</h2>
+                <h2 class="card-header">Convert the queue to a permant playlist</h2>
+                <h2 class="card-header">Songs in queue: {{ count(Session::get('song_id'))}} </h2>
                 <div class="card-body">
-                    <form method="POST" action="{{ url('playlists/addToDB')}} ">
+                    <form method="POST" action="{{ url('playlists/createPlaylistFromQueue')}} ">
                         @csrf
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Playlist name</label>
@@ -38,6 +39,5 @@
     </div>
 </div>
     
-
 
 @endsection

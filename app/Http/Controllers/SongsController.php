@@ -61,7 +61,6 @@ class SongsController extends Controller
         if ($request->input('playlist_id') == 'createTempQueue') {
 
             Session::put('name', 'Temporary Queue');
-            Session::put('user_id', Auth()->id());
             Session::put('song_id', [$request->input('song_id')]);
 
         } 
