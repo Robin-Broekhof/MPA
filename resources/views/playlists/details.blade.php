@@ -12,6 +12,26 @@
     </div>
 @endif
 
+<!--
+<h2 class="card-header"> Total length: 
+    {{  $playlistTotalTime = $playlist->songs->sum('length'); }}
+    <a>
+        {{ dd($playlistTotalTime) }}
+    </a>
+</h2>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

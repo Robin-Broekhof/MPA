@@ -55,7 +55,7 @@
                         <div class="form-group row">
                             <label for="length" class="col-md-4 col-form-label text-md-right">Song duration (hh:mm:ss)</label>
                             <div class="col-md-6">
-                                <input value="00:00:00" name="length" id="length" class="form-cntrol" type="time" step="1" autofocus>
+                                <input value="00:00:00" name="length" id="length" class="form-control" type="time" step="1" autofocus>
                             </div>
                         </div>
 
