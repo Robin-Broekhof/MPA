@@ -168,6 +168,10 @@ class PlaylistsController extends Controller
     {
         $playlist = Playlist::where('id', $id);
         $playlist->delete();
+
+        $playlist_song = Playlist_song::where('playlist_id', $id);
+        $playlist_song->delete();
+
         return redirect('/playlists')->with('message', 'playlist successfully deleted');
     }
 
