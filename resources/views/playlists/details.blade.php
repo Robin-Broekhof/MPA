@@ -50,7 +50,7 @@
                             <td> {{ $song->creator }} </td>
                             <td> {{ $genre->name }} </td>
                             <td> {{ $song->length }} </td>
-                            <td><a href="/playlists/removesongfromqueue" class="btn btn-danger">X</a></td>
+                            <td><a href="/playlists/removesongfromqueue/{{ $song->id }}" class="btn btn-danger">X</a></td>
                           </tr>
 
 

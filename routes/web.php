@@ -54,7 +54,7 @@ Route::get('/playlists/removefromplaylist/{playlist_id}&{song_id}', [PlaylistsCo
 Route::get('/playlists/convertplaylist', [PlaylistsController::class, 'convertplaylist']);
 Route::post('/playlists/createPlaylistFromQueue', [PlaylistsController::class, 'createPlaylistFromQueue']);
 
-Route::get('/playlists/removesongfromqueue', [PlaylistsController::class, 'removeSongFromQueue']);
+Route::get('/playlists/removesongfromqueue/{song_id}', [PlaylistsController::class, 'removeSongFromQueue']);
 Route::get('/playlists/removequeue/', [PlaylistsController::class, 'removequeue']);
 
 

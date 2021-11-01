@@ -182,10 +182,14 @@ class PlaylistsController extends Controller
 
 
     
-    public function removeSongFromQueue(Request $request)
+    public function removeSongFromQueue(Request $request, $song_id)
     {
-        Session()->forget('song_id')[1];
 
+        $songs = session()->pull('song_id', []); // Second argument is a default value
+        if(($key = array_search($song_id, $songs)) !== false) {
+            unset($songs[$key]);
+        }
+        session()->put('song_id', $songs);
 
 
 

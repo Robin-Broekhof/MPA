@@ -17,7 +17,7 @@
     </div>
 @endif
 
-@if (Session::has('name') && Session::get('user_id') == Auth()->id())
+@if (Session::has('name'))
     <div class="card song-card">
         <div class="card-body">
             <h5 class="card-title">{{ Session::get('name') }} </h5> 
