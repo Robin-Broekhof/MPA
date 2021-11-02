@@ -2,7 +2,6 @@
 @section('content')
 
 
-<a>00:25:22</a>
 
 @if (session()->has('message'))
     <div>
@@ -12,6 +11,7 @@
     </div>
 @endif
 
+@php $length = 0 @endphp
 
 
 
@@ -58,6 +58,7 @@
                                 $genre = DB::table('genres')->find($song->genre_id);
                             @endphp
                         <tr> 
+                            @php $length += strtotime($song->length) @endphp 
                             <td> {{ $song->name }} </td>
                             <td> {{ $song->creator }} </td>
                             <td> {{ $genre->name }} </td>
@@ -67,6 +68,9 @@
 
 
                           @endforeach
+                          @if (Session::get('song_id') !== null)
+                            <h2> {{ date("H:i:s",$length) }} </h2>
+                        @endif
 
                     </table>
                 @else
@@ -87,8 +91,13 @@
                             </tr>
                     @endif
 
+                           
+                            
+                           
+
                         @forelse ($playlist->songs as $song)
                             <tr>
+                                @php $length += strtotime($song->length) @endphp 
                               <td>{{ $song->name}}</td>
                               <td>{{ $song->creator}}</td>
                               <td>{{ $song->genre->name}}</td>
@@ -96,8 +105,10 @@
                               <td><a href="/playlists/removefromplaylist/{{ $playlist->id }}&{{ $song->id }}" class="btn btn-danger">X</a></td>
                             </tr>
                         @empty
-
                         @endforelse
+                        @if (!$playlist->songs->isEmpty())
+                            <h2> {{ date("H:i:s",$length) }} </h2>
+                        @endif
                     </table>
                 @endif
 

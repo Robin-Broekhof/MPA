@@ -47,12 +47,12 @@ class PlaylistsController extends Controller
             
             $queue = true;
             $songs = Song::all();
-            return view('playlists.details', compact('songs'))
+            return view('playlists.detailspage', compact('songs'))
                 ->with('queue', $queue);
         }
         else{
             $queue = false;
-            return view('playlists.details')
+            return view('playlists.detailspage')
                 ->with('playlist', Playlist::where('id', $id)->first())->with('queue', $queue);
         }
     }
