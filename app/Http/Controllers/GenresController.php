@@ -18,6 +18,8 @@ class GenresController extends Controller
             'showbygenre'
             ]]);
     }
+
+
     /**
      * shows the index page
      */
@@ -26,12 +28,16 @@ class GenresController extends Controller
         $genres = Genre::all();
         return view('genres.index', compact('genres'));
     }
+
+
+
+    
     /**
      * display all songs by a single genre
      *
      * @param [int] $genre_id
      */
-    public function showbygenre($id)    // !!** naar compact veranderen
+    public function showByGenre($id)    // !!** naar compact veranderen
     {
         $songs = Song::all();
         return view('genres.showbygenre', compact('songs'))

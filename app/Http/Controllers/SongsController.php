@@ -22,26 +22,32 @@ class SongsController extends Controller
             ]]);
     }
 
+
     /**
      * shows the index page
      */
     public function index() 
     {
-
-
         $songs = Song::all();
         $genres = Genre::all();
         return view('songs.index', compact('songs', 'genres'));
     }
+
+
+
     /**
      * shows the myuploads page
      */
-    public function myuploads() 
+    public function myUploads() 
     {
         $songs = Song::all();
         $genres = Genre::all();
         return view('songs.myuploads', compact('songs', 'genres'));
     }
+
+
+
+
      /**
      * shows the myuploads page
      */
@@ -54,56 +60,32 @@ class SongsController extends Controller
 
 
 
-
+    /**
+     * add song into playlist function
+     *
+     * @param Request $request
+     */
     public function addSongIntoPlaylist(Request $request)
     {
-
         if ($request->input('playlist_id') == 'createTempQueue') {
-
             Session::put('name', 'Temporary Queue');
             Session::put('song_id', [$request->input('song_id')]);
-
         } 
         elseif ($request->input('playlist_id') == 'addToTempQueue' ) {
-            
-
             Session::push('song_id', $request->input('song_id'));
-
         }
-
             else {
             $request->validate([
                 'song_id' => 'required',
                 'playlist_id' => 'required'
             ]);
-
             playlist_song::create([
                 'song_id' => $request->input('song_id'),
                 'playlist_id' => $request->input('playlist_id')
             ]);
         }
         return redirect('/songs')->with('message', 'song added to playlist');
-        
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     /**
@@ -118,11 +100,6 @@ class SongsController extends Controller
     }
     
 
-
-
-
-
-
     /**
      * shows the create page
      *
@@ -133,6 +110,9 @@ class SongsController extends Controller
         $genres = Genre::all();
         return view('songs.create', compact('songs', 'genres'));
     }
+
+
+
     /**
      * adds the data requested from the create page into the database
      *
@@ -156,6 +136,9 @@ class SongsController extends Controller
         return redirect('/songs/myuploads')->with('message', 'song added');
     }
 
+
+
+
     /**
      * shows the form page of the update functionality
      *
@@ -167,6 +150,8 @@ class SongsController extends Controller
         return view('songs.update', compact('genres'))
             ->with('song', Song::where('id', $id)->first());
     }
+
+
 
     /**
      * get the data from the update form request and updates the database
@@ -182,7 +167,6 @@ class SongsController extends Controller
             'genre_id' => 'required',
             'length' => 'required'
         ]);
-
         Song::where('id', $id)
             ->update([
                 'name' => $request->input('name'),
@@ -194,6 +178,7 @@ class SongsController extends Controller
             return redirect('/songs/myuploads')->with('message', 'song successfully updated');
     }
 
+    
 
     /**
      * deletes playlist entry

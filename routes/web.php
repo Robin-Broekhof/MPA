@@ -26,11 +26,11 @@ Route::get('/', [PagesController::class, 'index']);
 
 //genres page
 Route::get('/genres', [GenresController::class, 'index']);
-Route::get('/genres/showbygenre/{genre_id}', [GenresController::class, 'showbygenre']);
+Route::get('/genres/showbygenre/{genre_id}', [GenresController::class, 'showByGenre']);
 
 //songs page
 Route::get('/songs', [SongsController::class, 'index']);
-Route::get('/songs/myuploads', [SongsController::class, 'myuploads']);
+Route::get('/songs/myuploads', [SongsController::class, 'myUploads']);
 Route::get('/songs/addtoplaylist/{id}', [SongsController::class, 'addToPlaylist']);
 Route::post('/songs/addSongIntoPlaylist/{id}', [SongsController::class, 'addSongIntoPlaylist']);
 Route::get('/songs/details/{id}', [SongsController::class, 'details']); 
@@ -50,12 +50,11 @@ Route::post('/playlists/addToDB', [PlaylistsController::class, 'addToDB']);
 Route::get('/playlists/update/{id}', [PlaylistsController::class, 'update']);
 Route::put('/playlists/updateIntoDB/{id}', [PlaylistsController::class, 'updateIntoDB']);
 Route::get('/playlists/delete/{id}', [PlaylistsController::class, 'delete']);
-Route::get('/playlists/removefromplaylist/{playlist_id}&{song_id}', [PlaylistsController::class, 'removefromplaylist']);
-Route::get('/playlists/convertplaylist', [PlaylistsController::class, 'convertplaylist']);
+Route::get('/playlists/removefromplaylist/{playlist_id}&{song_id}', [PlaylistsController::class, 'removeFromPlaylist']);
+Route::get('/playlists/convertplaylist', [PlaylistsController::class, 'convertPlaylist']);
 Route::post('/playlists/createPlaylistFromQueue', [PlaylistsController::class, 'createPlaylistFromQueue']);
-
 Route::get('/playlists/removesongfromqueue/{song_id}', [PlaylistsController::class, 'removeSongFromQueue']);
-Route::get('/playlists/removequeue/', [PlaylistsController::class, 'removequeue']);
+Route::get('/playlists/removequeue/', [PlaylistsController::class, 'removeQueue']);
 
 
 

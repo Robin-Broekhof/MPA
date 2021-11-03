@@ -42,7 +42,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
+    /**
+     * a user can have many songs
+     *
+     */
     public function song()
     {
         return $this->hasMany(Song::class);

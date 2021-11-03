@@ -25,9 +25,6 @@ class PlaylistsController extends Controller
 
 
 
-
-
-
     /**
      * shows the index page
      */
@@ -36,6 +33,8 @@ class PlaylistsController extends Controller
         $playlists = Playlist::all();
         return view('playlists.index', compact('playlists'));
     }
+
+
     /**
      * shows detail page of a single playlist
      *
@@ -57,7 +56,10 @@ class PlaylistsController extends Controller
         }
     }
 
-    public function convertplaylist()
+    /**
+     * shows page for form to create permant playlist from session queue
+     */
+    public function convertPlaylist()
     {
         return view('playlists.convertplaylist');
     }
@@ -74,6 +76,8 @@ class PlaylistsController extends Controller
         $playlists = Playlist::all();
         return view('playlists.create', compact('playlists'));
     }
+
+
     /**
      * adds the data requested from the create page into the database
      *
@@ -95,28 +99,29 @@ class PlaylistsController extends Controller
     }
 
 
-
+    /**
+     * creates permant playlist from session queue, and creates records in pivot table
+     * 
+     * @param Request $request
+     */
     public function createPlaylistFromQueue(Request $request)
     {
         $request->validate([
             'name' => 'required',
             'description' => 'required'
         ]);
-
         $playlist = Playlist::create([
             'id' => null,
             'name' => $request->input('name'),
             'description' => $request->input('description'),
             'user_id' => auth()->user()->id
         ]);
-
         foreach (Session::get('song_id') as $key => $item) {
             Playlist_song::create([
                 'playlist_id' => $playlist->id,
                 'song_id' => Session::get('song_id')[$key]
             ]);
         }
-
         Session::forget('name');
         Session::forget('song_id');
     }
@@ -134,6 +139,10 @@ class PlaylistsController extends Controller
         return view('playlists.update')
             ->with('playlist', Playlist::where('id', $id)->first());
     }
+
+
+
+
     /**
      * get the data from the update form request and updates the database
      *
@@ -176,7 +185,13 @@ class PlaylistsController extends Controller
     }
 
 
-    public function removefromplaylist($playlist_id, $song_id)
+    /**
+     * removes a song from playlist with both foreign keys
+     *
+     * @param [int] $playlist_id
+     * @param [int] $song_id
+     */
+    public function removeFromPlaylist($playlist_id, $song_id)
     {
         $playlist_song = Playlist_song::where('playlist_id', $playlist_id)
         ->where('song_id', $song_id);
@@ -185,24 +200,30 @@ class PlaylistsController extends Controller
     }
 
 
-    
+    /**
+     * removes a song from the session queue
+     *
+     * @param Request $request
+     * @param [type] $song_id
+     */
     public function removeSongFromQueue(Request $request, $song_id)
     {
-
         $songs = session()->pull('song_id', []); // Second argument is a default value
         if(($key = array_search($song_id, $songs)) !== false) {
             unset($songs[$key]);
         }
         session()->put('song_id', $songs);
 
-
-
         return redirect('/playlists/details/0')->with('message', 'song successfully deleted');
     }
 
 
 
-    public function removequeue()
+    /**
+     * deletes the queue by forgetting the session for the queue
+     *
+     */
+    public function removeQueue()
     {
         Session::forget('name');
         Session::forget('song_id');

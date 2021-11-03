@@ -10,10 +10,13 @@ class Genre extends Model
     use HasFactory;
 
 
-
-
+    /**
+     * A single genre can have many songs
+     *
+     */
     public function genre()
     {
         return $this->hasMany(Song::class);
     }
+    
 }

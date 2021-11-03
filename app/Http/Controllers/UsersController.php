@@ -19,7 +19,6 @@ class UsersController extends Controller
         Session::forget('_token');
         Auth::logout();
         return redirect('/');
-        
     }
 
 

@@ -18,12 +18,19 @@ class PagesController extends Controller
         $songs = Song::all();
         return view('index', compact('genres', 'songs'));
     }
+
+
+
+
     /**
      * shows the login page
      */
     public function login() {
         return view('auth/login');
     }
+
+
+    
     /**
      * shows the register page
      */
