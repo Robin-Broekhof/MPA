@@ -89,7 +89,6 @@ class PlaylistsController extends Controller
             'name' => 'required',
             'description' => 'required'
         ]);
-
         Playlist::create([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
@@ -124,6 +123,7 @@ class PlaylistsController extends Controller
         }
         Session::forget('name');
         Session::forget('song_id');
+        return redirect('/playlists')->with('message', 'Queue has been made into playlist');
     }
 
 
