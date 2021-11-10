@@ -9,6 +9,8 @@ use App\Models\Song;
 use App\Models\Genre;
 use App\Models\Playlist_song;
 
+use App\Classes\PlaylistQueue;
+
 class PlaylistsController extends Controller
 {
 
@@ -22,7 +24,10 @@ class PlaylistsController extends Controller
             ]]);
     }
 
-
+public function fs(){
+    Session::forget('name');
+    Session::forget('song_id');
+}
 
 
     /**
@@ -30,8 +35,9 @@ class PlaylistsController extends Controller
      */
     public function index() 
     {
+        $classData = new PlaylistQueue();
         $playlists = Playlist::all();
-        return view('playlists.index', compact('playlists'));
+        return view('playlists.index', compact('playlists', 'classData'));
     }
 
 
@@ -61,7 +67,8 @@ class PlaylistsController extends Controller
      */
     public function convertPlaylist()
     {
-        return view('playlists.convertplaylist');
+        $classData = new PlaylistQueue();
+        return view('playlists.convertplaylist', compact('classData'));
     }
 
 
@@ -116,13 +123,20 @@ class PlaylistsController extends Controller
             'user_id' => auth()->user()->id
         ]);
         foreach (Session::get('song_id') as $key => $item) {
+
+            //$playlist->songs->attach(Session::get('song_id')[$key]);
+
+
             Playlist_song::create([
                 'playlist_id' => $playlist->id,
                 'song_id' => Session::get('song_id')[$key]
             ]);
         }
-        Session::forget('name');
-        Session::forget('song_id');
+
+    
+
+        $classData = new PlaylistQueue();
+        $classData->deleteSession();
         return redirect('/playlists')->with('message', 'Queue has been made into playlist');
     }
 
@@ -225,8 +239,9 @@ class PlaylistsController extends Controller
      */
     public function removeQueue()
     {
-        Session::forget('name');
-        Session::forget('song_id');
+        $classData = new PlaylistQueue();
+        $classData->deleteSession();
+
         return redirect('/playlists')->with('message', 'queue has been removed');
     }
 

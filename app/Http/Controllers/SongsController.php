@@ -9,6 +9,8 @@ use App\Models\Song;
 use App\Models\Playlist;
 use App\Models\Playlist_song;
 
+use App\Classes\PlaylistQueue;
+
 class SongsController extends Controller
 {
     /**
@@ -53,8 +55,10 @@ class SongsController extends Controller
      */
     public function addToPlaylist($id) 
     {
+        
+        $classData = new PlaylistQueue();
         $playlists = Playlist::all();
-        return view('songs.addtoplaylist', compact('playlists'))
+        return view('songs.addtoplaylist', compact('playlists', 'classData'))
             ->with('song', Song::where('id', $id)->first());
     }
 
@@ -67,12 +71,13 @@ class SongsController extends Controller
      */
     public function addSongIntoPlaylist(Request $request)
     {
+        $sessionData = new PlaylistQueue();
         if ($request->input('playlist_id') == 'createTempQueue') {
-            Session::put('name', 'Temporary Queue');
-            Session::put('song_id', [$request->input('song_id')]);
+            $sessionData->putSessionName('Temporary playlist');
+            $sessionData->putSessionSongs($request);
         } 
         elseif ($request->input('playlist_id') == 'addToTempQueue' ) {
-            Session::push('song_id', $request->input('song_id'));
+            $sessionData->pushSessionSongs($request);
         }
             else {
             $request->validate([
@@ -87,6 +92,7 @@ class SongsController extends Controller
         return redirect('/songs')->with('message', 'song added to playlist');
     }
 
+    
 
     /**
      * shows detail page of a single playlist

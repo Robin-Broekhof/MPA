@@ -7,7 +7,7 @@
         <div class="col-md-8">
             <div class="card">
                 <h2 class="card-header">Convert the queue to a permant playlist</h2>
-                <h2 class="card-header">Songs in queue: {{ count(Session::get('song_id'))}} </h2>
+                <h2 class="card-header">Songs in queue: {{ $classData->countSongs() }} </h2>
                 <div class="card-body">
                     <form method="POST" action="{{ url('playlists/createPlaylistFromQueue')}} ">
                         @csrf

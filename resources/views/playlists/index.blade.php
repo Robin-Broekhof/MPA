@@ -17,12 +17,11 @@
     </div>
 @endif
 
-@if (Session::has('name'))
+
+@if ($classData->hasName())
     <div class="card song-card">
         <div class="card-body">
-            <h5 class="card-title">{{ Session::get('name') }} </h5> 
-            
-
+            <h5 class="card-title">{{ $classData->getSessionName() }} </h5> 
             <p class="card-text">This is a temporary playlist that will be deleted after 2 hours or logging out on a device </p>
             <a href="/playlists/details/0" class="btn btn-outline-dark btn-block">DETAILS</a>
             <a href="/playlists/convertplaylist" class="btn btn-outline-warning btn-block">MAKE THIS QUEUE INTO PLAYLIST</a>
