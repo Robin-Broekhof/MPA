@@ -24,6 +24,7 @@ public function getSessionName()
     return($this->name);
 }
 
+
 public function putSessionName($name)
 {
     Session::put('name', $name);
@@ -59,7 +60,7 @@ public function deleteSession(){
 
 public function addSessionSong(Request $request){
     if(Session::has('name')){
-
+        Session::push('song_id', $request->input('song_id'));
     }
     else{
         Session::put('name', 'temporary playlist');

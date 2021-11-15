@@ -58,8 +58,8 @@ Route::get('/playlists/removequeue/', [PlaylistsController::class, 'removeQueue'
 
 
 
-
 Route::get('/fs', [PlaylistsController::class, 'fs']);
+Route::get('/dds', [PlaylistsController::class, 'ddsession']);
 
 
 

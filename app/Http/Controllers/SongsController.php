@@ -75,6 +75,7 @@ class SongsController extends Controller
         if ($request->input('playlist_id') == 'createTempQueue') {
             $sessionData->putSessionName('Temporary playlist');
             $sessionData->putSessionSongs($request);
+            $sessionData->pushSessionSongs($request);
         } 
         elseif ($request->input('playlist_id') == 'addToTempQueue' ) {
             $sessionData->pushSessionSongs($request);
@@ -129,6 +130,7 @@ class SongsController extends Controller
         $request->validate([
             'name' => 'required',
             'creator' => 'required',
+            'genre' => 'required',
             'length' => 'required'
         ]);
 

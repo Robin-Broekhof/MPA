@@ -29,6 +29,11 @@ public function fs(){
     Session::forget('song_id');
 }
 
+public function ddsession()
+{
+    dd(Session::get('song_id'));
+}
+
 
     /**
      * shows the index page
@@ -51,8 +56,9 @@ public function fs(){
         if ($id == 0) {
             
             $queue = true;
+            $classData = new PlaylistQueue();
             $songs = Song::all();
-            return view('playlists.detailspage', compact('songs'))
+            return view('playlists.detailspage', compact('songs', 'classData'))
                 ->with('queue', $queue);
         }
         else{
@@ -112,6 +118,9 @@ public function fs(){
      */
     public function createPlaylistFromQueue(Request $request)
     {
+        
+        $classData = new PlaylistQueue();
+        
         $request->validate([
             'name' => 'required',
             'description' => 'required'
@@ -122,20 +131,18 @@ public function fs(){
             'description' => $request->input('description'),
             'user_id' => auth()->user()->id
         ]);
-        foreach (Session::get('song_id') as $key => $item) {
+        foreach ($classData->getSessionSongs() as $key => $item) {
 
             //$playlist->songs->attach(Session::get('song_id')[$key]);
 
 
             Playlist_song::create([
                 'playlist_id' => $playlist->id,
-                'song_id' => Session::get('song_id')[$key]
+                'song_id' => $classData->getSessionSongs()[$key]
             ]);
         }
 
     
-
-        $classData = new PlaylistQueue();
         $classData->deleteSession();
         return redirect('/playlists')->with('message', 'Queue has been made into playlist');
     }

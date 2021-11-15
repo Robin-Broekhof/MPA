@@ -52,9 +52,9 @@
                         </tr>
 
                 
-                        @foreach (Session::get('song_id') as $key => $item)
+                        @foreach ($classData->getSessionSongs() as $key => $item)
                             @php
-                                $song = DB::table('songs')->find(Session::get('song_id')[$key]);
+                                $song = DB::table('songs')->find($classData->getSessionSongs()[$key]);
                                 $genre = DB::table('genres')->find($song->genre_id);
                             @endphp
                         <tr> 
@@ -68,7 +68,7 @@
 
 
                           @endforeach
-                          @if (Session::get('song_id') !== null)
+                          @if ($classData->getSessionSongs() !== null)
                             <h2> {{ date("H:i:s",$length) }} </h2>
                         @endif
 
