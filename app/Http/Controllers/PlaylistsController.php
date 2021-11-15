@@ -24,17 +24,6 @@ class PlaylistsController extends Controller
             ]]);
     }
 
-public function fs(){
-    Session::forget('name');
-    Session::forget('song_id');
-}
-
-public function ddsession()
-{
-    dd(Session::get('song_id'));
-}
-
-
     /**
      * shows the index page
      */
@@ -131,16 +120,10 @@ public function ddsession()
             'description' => $request->input('description'),
             'user_id' => auth()->user()->id
         ]);
-        foreach ($classData->getSessionSongs() as $key => $item) {
-
-            //$playlist->songs->attach(Session::get('song_id')[$key]);
 
 
-            Playlist_song::create([
-                'playlist_id' => $playlist->id,
-                'song_id' => $classData->getSessionSongs()[$key]
-            ]);
-        }
+        $playlist->songs()->attach($classData->getSessionSongs());
+
 
     
         $classData->deleteSession();
@@ -229,11 +212,10 @@ public function ddsession()
      */
     public function removeSongFromQueue(Request $request, $song_id)
     {
-        $songs = session()->pull('song_id', []); // Second argument is a default value
-        if(($key = array_search($song_id, $songs)) !== false) {
-            unset($songs[$key]);
-        }
-        session()->put('song_id', $songs);
+    
+        $classData = new PlaylistQueue();
+        $classData->removeSongFromQueue($request, $song_id);
+
 
         return redirect('/playlists/details/0')->with('message', 'song successfully deleted');
     }

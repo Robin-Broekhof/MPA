@@ -11,6 +11,6 @@
     @endif
 
 
-
+<h1>This is an empty homepage</h1>
     
 @endsection

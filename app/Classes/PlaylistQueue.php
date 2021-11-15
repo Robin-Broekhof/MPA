@@ -49,16 +49,19 @@ public function countSongs()
     return(count(Session::get('song_id')));
 }
 
-public function getSessionSongs(){
+public function getSessionSongs()
+{
     return($this->song_id);
 }
 
-public function deleteSession(){
+public function deleteSession()
+{
     Session::forget('name');
     Session::forget('song_id');
 }
 
-public function addSessionSong(Request $request){
+public function addSessionSong(Request $request)
+{
     if(Session::has('name')){
         Session::push('song_id', $request->input('song_id'));
     }
@@ -67,6 +70,16 @@ public function addSessionSong(Request $request){
         Session::put('song_id', [$request->input('song_id')]);
     }
 }
+public function removeSongFromQueue(Request $request, $song_id)
+{
+    $songs = session()->pull('song_id', []); // Second argument is a default value
+    if(($key = array_search($song_id, $songs)) !== false) {
+        unset($songs[$key]);
+    }
+    session()->put('song_id', $songs);
+}
 
 
 }
+
+?>

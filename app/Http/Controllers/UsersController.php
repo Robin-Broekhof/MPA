@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
+use App\Classes\UserToken;
+
 class UsersController extends Controller
 {
     
@@ -16,7 +18,8 @@ class UsersController extends Controller
      */
     public function logout()
     {
-        Session::forget('_token');
+        $userTokenClass = new UserToken;
+        $userTokenClass->wipeSessionToken();
         Auth::logout();
         return redirect('/');
     }
